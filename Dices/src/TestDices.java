@@ -1,4 +1,4 @@
-public class App {
+public class TestDices {
     public static void main(String[] args) throws Exception {
         DoubleDice dice1 = new DoubleDice();
         LuckyDoubleDice dice2 = new LuckyDoubleDice();
