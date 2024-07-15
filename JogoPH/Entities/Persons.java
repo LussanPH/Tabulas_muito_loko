@@ -1,39 +1,55 @@
-package Entities;
 
 public class Persons {
-    protected String cor;
-    protected int nJogada;
-    protected int casa;
-    protected int status;
-
-    public Persons(String cor, int nJogada, int casa, int status){
-        this.cor = cor;
-        this.nJogada = nJogada;
-        this.casa = casa;
-        this.status = status;
-    }
-
-    public int getCasa() {
-        return casa;
-    }
-    public void setCasa(int casa) {
-        this.casa = casa;
-    }
-    public String getCor() {
-        return cor;
-    }
-    public int getStatus() {
-        return status;
-    }
-    public int getnJogada() {
-        return nJogada;
-    }
-    public void setStatus(int status) {
-        this.status = status;
-    }
-    public void setnJogada(int nJogada) {
-        this.nJogada = nJogada;
-    }
-
-    /**Jogar dado */
+	private char type;
+	private int house;
+	private int dice_result;
+	DoubleDice ndice = new DoubleDice();
+	LuckyDoubleDice ldice = new LuckyDoubleDice();
+	MisfortuneDoubleDice mdice = new MisfortuneDoubleDice();
+	
+	public Persons(char t, int h) {
+		this.type = t;
+		this.house = h;
+	}
+	
+	public char getType() {
+		return type;
+	}
+	public void setType(char type) {
+		this.type = type;
+	}
+	public int getHouse() {
+		return house;
+	}
+	public void setHouse(int house) {
+		this.house = house;
+	}
+	
+	public int TrowDice(char type) {
+		if(type == 'n') {
+			return ndice.ThrowDices();
+		}
+		else if(type == 'l') {
+			return ldice.ThrowDices();
+		}
+		else if(type == 'm') {
+			return mdice.ThrowDices();
+		}
+		else {
+			return 0;
+		}
+	}
+	
+	public int getDiceResult() {
+		return dice_result;
+	}
+	public void rollDice() {
+		this.dice_result = TrowDice(this.type);
+	}
+	
+	public void walk() {
+		this.house += this.dice_result;
+	}
+	
+	
 }
