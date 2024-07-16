@@ -1,16 +1,17 @@
-import Dices.dices;
+
 public class Persons {
 	private char type;
 	private int house;
 	private int dice_result;
 	private String color;
-	DoubleDice ndice = new DoubleDice();
-	LuckyDoubleDice ldice = new LuckyDoubleDice();
-	MisfortuneDoubleDice mdice = new MisfortuneDoubleDice();
+	DoubleDice dice = new DoubleDice();
 	
-	public Persons(char t, int h) {
+	
+	
+	public Persons(char t, int h, String c) {
 		this.type = t;
 		this.house = h;
+		this.color = c;
 	}
 	
 	public char getType() {
@@ -35,17 +36,19 @@ public class Persons {
 	
 	public int TrowDice(char type) {
 		if(type == 'n') {
-			return ndice.ThrowDices();
+			dice = new DoubleDice();
 		}
 		else if(type == 'l') {
-			return ldice.ThrowDices();
+			dice = new LuckyDoubleDice();
 		}
 		else if(type == 'm') {
-			return mdice.ThrowDices();
+			dice = new MisfortuneDoubleDice();
 		}
 		else {
 			return 0;
 		}
+		
+		return dice.ThrowDices();
 	}
 	
 	public int getDiceResult() {
