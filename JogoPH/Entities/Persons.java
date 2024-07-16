@@ -1,4 +1,4 @@
-
+import Dices.dices;
 public class Persons {
 	private char type;
 	private int house;
