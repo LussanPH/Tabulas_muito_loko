@@ -3,6 +3,7 @@ public class Persons {
 	private char type;
 	private int house;
 	private int dice_result;
+	private String color;
 	DoubleDice ndice = new DoubleDice();
 	LuckyDoubleDice ldice = new LuckyDoubleDice();
 	MisfortuneDoubleDice mdice = new MisfortuneDoubleDice();
@@ -23,6 +24,13 @@ public class Persons {
 	}
 	public void setHouse(int house) {
 		this.house = house;
+	}
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 	
 	public int TrowDice(char type) {
@@ -50,6 +58,8 @@ public class Persons {
 	public void walk() {
 		this.house += this.dice_result;
 	}
+
+	
 	
 	
 }
