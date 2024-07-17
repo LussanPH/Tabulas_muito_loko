@@ -12,21 +12,20 @@ public class Round {
 	private int[] magic_houses = {20,35};
 	
 	/*attributes*/
-	private Persons[] player;//onde os jogadores ficarão armazenados
+	private Persons player;//onde os jogadores ficarão armazenados
 	
 	/*constructor*/
-	public Round(Persons[] person) {
-		this.player = person;
-		
-		
-		
+	public Round(Persons person) {
+		this.player = person;	
 	}
+
+	public Round();
 	
 	/*gets and sets*/
-	public Persons[] getPerson() {
+	public Persons getPerson() {
 		return player;
 	}
-	public void setPerson(Persons[] person) {
+	public void setPerson(Persons person) {
 		this.player = person;
 	}
 	
@@ -41,15 +40,15 @@ public class Round {
 		return false;
 	}
 	
-	public void makeRound(int num_player) {//onde o jogador fará sua jogada.
-		player[num_player].rollDice();//anda
-		player[num_player].walk();
+	public void makeRound() {//onde o jogador fará sua jogada.
+		player.rollDice();//anda
+		player.walk();
 		int house = player[num_player].getHouse();
-		player[num_player].setDont_play(IsIn(house, this.dont_play_houses));
-		player[num_player].setSurprise(IsIn(house, this.surprise_house)); 
-		player[num_player].setLuck(IsIn(house, this.luck_houses));
-		player[num_player].setMagic(IsIn(house, this.magic_houses));
-		player[num_player].setChooseToInit(IsIn(house, this.choose_to_init_houses));
+		player.setDont_play(IsIn(house, this.dont_play_houses));
+		player.setSurprise(IsIn(house, this.surprise_house)); 
+		player.setLuck(IsIn(house, this.luck_houses));
+		player.setMagic(IsIn(house, this.magic_houses));
+		player.setChooseToInit(IsIn(house, this.choose_to_init_houses));
 	}
 	
 	
