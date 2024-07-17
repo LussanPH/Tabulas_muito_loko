@@ -31,7 +31,7 @@ public class Round {
 	
 	/*methods*/
 	
-	public boolean IsIn(int number, int[] arr) {
+	private boolean IsIn(int number, int[] arr) {
 		for(int element : arr) {
 			if(number == element) {
 				return true;
