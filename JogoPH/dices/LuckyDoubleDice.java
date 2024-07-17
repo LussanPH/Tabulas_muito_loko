@@ -1,3 +1,5 @@
+package dices;
+
 public class LuckyDoubleDice extends DoubleDice {
     /*Iniciando esta classe filha*/
     public LuckyDoubleDice(){
@@ -5,6 +7,10 @@ public class LuckyDoubleDice extends DoubleDice {
     }
     
     @Override public int ThrowDices(){
-        return rdm.nextInt(4) + rdm.nextInt(3) + 7;//Dados sortudos, vão de 7 à 12
+    	int sum = ThrowDice(1) + ThrowDice(2);
+    	if (sum < 7) {
+    		sum += 6;
+    	}
+    	return sum;
     }
 }
