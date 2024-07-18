@@ -1,5 +1,6 @@
 package entities;
 import dices.*;
+import java.util.Random;
 
 public class Persons {
 	private char type;
@@ -22,7 +23,11 @@ public class Persons {
 		this.house = h;
 		this.color = c;
 		
-		this.setDont_play(this.setChoose_to_init(this.setLuck(this.setSurprise(this.setMagic(false)))));
+		this.dont_play = false;
+		this.surprise = false;
+		this.luck = false;
+		this.choose_to_init = false;
+		this.magic = false;
 	}
 	
 	public char getType() {
@@ -72,6 +77,16 @@ public class Persons {
 	public void walk() {
 		this.house += this.dice_result;
 	}
+	
+	
+	
+	public void setTypeToRandom() {
+		Random rdm = new Random();
+		char[] types = {'n', 'l', 'm'};
+		int index = rdm.nextInt(3);
+		this.type = types[index];	
+	}
+	
 
 	public boolean isDont_play() {
 		return dont_play;
