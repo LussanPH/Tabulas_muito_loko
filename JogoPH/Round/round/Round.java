@@ -1,6 +1,7 @@
 package round;
 import entities.*;
 
+
 public class Round {
 	
 	
@@ -19,7 +20,7 @@ public class Round {
 		this.player = person;	
 	}
 
-	public Round();
+	public Round() {};
 	
 	/*gets and sets*/
 	public Persons getPerson() {
@@ -41,18 +42,47 @@ public class Round {
 	}
 	
 	public void makeRound() {//onde o jogador fará sua jogada.
-		player.rollDice();//anda
-		player.walk();
+		player.rollDice();//joga dado
+		player.walk();//anda
 		int house = player.getHouse();
 		player.setDont_play(IsIn(house, this.dont_play_houses));
 		player.setSurprise(IsIn(house, this.surprise_house)); 
 		player.setLuck(IsIn(house, this.luck_houses));
 		player.setMagic(IsIn(house, this.magic_houses));
 		player.setChooseToInit(IsIn(house, this.choose_to_init_houses));
+		
+		
 	}
 	
-	
-	
-	
-	
+	public void applyStatusEffects(Persons[] persons) {
+		if(player.isDont_play() == true) {
+			//he does not play for one round
+		}
+		else if(player.isChooseToInit() == true) {
+			//choose a player to go to start
+		}
+		else if(player.isMagic() == true) {
+			
+			/*achando o menor*/
+			int smaller_value = 42;
+			int lower_index = 0;
+			for (int i = 0; i < persons.length; i++) {
+				if (persons[i].getHouse() < smaller_value) {
+	              			smaller_value = persons[i].getHouse();
+	                		lower_index = i; // Atualiza a posição do menor valor encontrado
+	            }
+	        }
+			
+			player.setHouse(persons[lower_index].getHouse());//take the place of the last one
+			persons[lower_index].setHouse(player.getHouse());
+			
+		}
+		else if(player.isLuck() == true) {
+			player.setHouse(player.getHouse() + 3);//walk 3 more houses
+		}
+		else if(player.isSurprise() == true) {
+			player.setTypeToRandom();
+		}
+	}
+		
 }
