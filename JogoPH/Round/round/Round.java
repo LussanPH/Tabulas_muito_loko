@@ -43,7 +43,7 @@ public class Round {
 	public void makeRound() {//onde o jogador fará sua jogada.
 		player.rollDice();//anda
 		player.walk();
-		int house = player[num_player].getHouse();
+		int house = player.getHouse();
 		player.setDont_play(IsIn(house, this.dont_play_houses));
 		player.setSurprise(IsIn(house, this.surprise_house)); 
 		player.setLuck(IsIn(house, this.luck_houses));
